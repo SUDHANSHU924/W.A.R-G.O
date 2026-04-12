@@ -1,0 +1,9 @@
+{
+  "name": "wargo",
+  "private": true,
+  "scripts": {
+    "client": "",
+    "server": "",
+    "dev": ""
+  }
+}
