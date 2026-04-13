@@ -2,8 +2,9 @@
   "name": "wargo",
   "private": true,
   "scripts": {
-    "client": "",
-    "server": "",
-    "dev": ""
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install"
   }
 }
