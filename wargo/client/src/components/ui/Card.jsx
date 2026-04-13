@@ -1,17 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export const Card = ({ children, className = '', variant = 'dark', ...props }) => {
-  const variants = {
-    dark: 'bg-card-dark border border-card-border',
-    light: 'bg-card-light border border-border-light shadow-card-light',
-  };
-
+export const Card = ({ children, className = '', ...props }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className={`rounded-2xl backdrop-blur-xl p-6 transition-all ${variants[variant]} ${className}`}
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className={`rounded-3xl bg-card border border-card-border shadow-soft backdrop-blur-sm p-6 transition-all duration-300 ${className}`}
       {...props}
     >
       {children}

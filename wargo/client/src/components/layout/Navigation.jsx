@@ -34,44 +34,55 @@ export const Sidebar = ({ activePage, setPage, isMobile = false, isOpen, setIsOp
   const sidebarContent = (
     <div className='flex flex-col h-full'>
       {/* Logo */}
-      <div className='flex items-center gap-3 mb-10 px-2'>
+      <div className='flex items-center gap-3 mb-10 px-2 group cursor-pointer' onClick={() => navigate('/')}>
         <motion.div
-          whileHover={{ rotate: 180 }}
-          transition={{ duration: 0.5 }}
-          className='w-8 h-8 rounded-lg bg-wargo-primary flex items-center justify-center'
+          whileHover={{ rotate: 180, scale: 1.1 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+          className='w-10 h-10 rounded-xl bg-accent-rose flex items-center justify-center shadow-glow-rose'
         >
-          <ShieldCheck className='w-5 h-5 text-white' />
+          <ShieldCheck className='w-6 h-6 text-white' />
         </motion.div>
-        <h1 className='text-xl font-black tracking-tighter'>WARGO</h1>
+        <h1 className='text-2xl font-bold tracking-tighter text-text-primary'>WARGO</h1>
       </div>
 
       {/* Navigation */}
-      <nav className='flex-1 space-y-2'>
+      <nav className='flex-1 space-y-3'>
         {menuItems.map((item) => (
           <motion.button
             key={item.id}
-            whileHover={{ x: 5 }}
-            className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium ${
+            whileHover={{ x: 4 }}
+            whileTap={{ scale: 0.98 }}
+            className={`w-full flex items-center gap-4 px-5 py-3.5 rounded-2xl transition-all duration-300 font-bold text-[13px] uppercase tracking-wider ${
               activePage === item.id
-                ? 'text-white bg-wargo-primary/10 border border-wargo-primary/20'
-                : 'text-wargo-muted hover:text-white hover:bg-white/5'
+                ? 'text-accent-rose bg-card border border-card-border shadow-soft'
+                : 'text-text-secondary hover:text-accent-rose hover:bg-card/50'
             }`}
             onClick={() => handleNavClick(item)}
           >
-            <item.icon className='w-5 h-5' />
+            <item.icon className={`w-5 h-5 transition-colors ${activePage === item.id ? 'text-accent-rose' : 'text-text-secondary/60'}`} />
             <span>{item.label}</span>
+            {activePage === item.id && (
+              <motion.div 
+                layoutId='activeNav'
+                className='ml-auto w-1.5 h-1.5 rounded-full bg-accent-rose'
+              />
+            )}
           </motion.button>
         ))}
       </nav>
 
-      {/* Logout */}
-      <motion.button
-        whileHover={{ x: 5 }}
-        className='w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-wargo-muted hover:text-red-400 hover:bg-red-500/5 transition-all duration-200 font-medium'
-      >
-        <LogOut className='w-5 h-5' />
-        <span>Logout</span>
-      </motion.button>
+      {/* Profile / Logout Section */}
+      <div className='mt-auto pt-6 border-t border-card-border/50'>
+        <motion.button
+          whileHover={{ x: 4 }}
+          className='w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-text-secondary hover:text-accent-rose hover:bg-card/50 transition-all duration-300 font-bold text-[13px] uppercase tracking-wider'
+        >
+          <div className='w-8 h-8 rounded-full bg-accent-rose/10 flex items-center justify-center'>
+            <LogOut className='w-4 h-4 text-accent-rose' />
+          </div>
+          <span>Logout</span>
+        </motion.button>
+      </div>
     </div>
   );
 
@@ -98,43 +109,31 @@ export const Sidebar = ({ activePage, setPage, isMobile = false, isOpen, setIsOp
   }
 
   return (
-    <aside className='hidden lg:flex fixed left-0 top-0 h-screen w-64 bg-background border-r border-card-border p-6 flex-col z-50'>
+    <aside className='hidden lg:flex fixed left-0 top-0 h-screen w-72 bg-white/50 backdrop-blur-3xl border-r border-card-border p-8 flex-col z-50'>
       {sidebarContent}
     </aside>
   );
 };
 
 export const Header = ({ isMobile, setIsOpen }) => {
-  const today = new Date();
-  const dateStr = today.toLocaleDateString('en-US', {
-    weekday: 'long',
-    month: 'short',
-    day: 'numeric',
-  });
-
   return (
-    <header className='sticky top-0 z-40 bg-background/80 backdrop-blur-xl border-b border-card-border'>
+    <header className='sticky top-0 z-40 bg-background/80 backdrop-blur-xl border-b border-card-border lg:hidden'>
       <div className='px-6 py-4 flex items-center justify-between'>
         <div className='flex items-center gap-4'>
-          {isMobile && (
-            <button
-              onClick={() => setIsOpen(true)}
-              className='p-2 hover:bg-white/5 rounded-lg transition'
-            >
-              <Menu className='w-5 h-5' />
-            </button>
-          )}
-          <div>
-            <p className='text-sm text-wargo-muted uppercase tracking-wider'>Today</p>
-            <h2 className='text-lg font-bold'>{dateStr}</h2>
-          </div>
+          <button
+            onClick={() => setIsOpen(true)}
+            className='p-2 bg-card border border-card-border rounded-xl transition shadow-soft'
+          >
+            <Menu className='w-6 h-6 text-accent-rose' />
+          </button>
+          <h2 className='text-3xl font-black tracking-tighter text-text-primary'>WARGO</h2>
         </div>
 
         <div className='flex items-center gap-4'>
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className='p-2.5 rounded-xl bg-wargo-primary/10 hover:bg-wargo-primary/20 border border-wargo-primary/20 text-wargo-primary transition'
+            className='p-3 rounded-full bg-card border border-card-border text-accent-rose shadow-soft transition'
           >
             <Bell className='w-5 h-5' />
           </motion.button>

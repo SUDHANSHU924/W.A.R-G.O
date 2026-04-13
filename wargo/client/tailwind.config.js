@@ -8,52 +8,67 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark theme
-        background: '#0A0A0B',
-        'card-dark': '#1a1f3a',
-        'card-border': '#2a3050',
-        foreground: '#FFFFFF',
-        
-        // Light theme
+        // High-end Light Theme (Elite)
+        background: '#FAF7F5',
+        foreground: '#1A1A1A',
+        card: {
+          DEFAULT: '#FDEEF4',
+          border: '#F0B8CE',
+          hover: '#FCD8E6',
+        },
+        text: {
+          primary: '#1A1A1A',
+          secondary: '#9A7A85',
+          muted: '#B08E9D',
+        },
+        accent: {
+          rose: '#C0577A',
+          bold: '#E05585',
+          light: '#F4A0C0',
+          gradient: {
+            start: '#E05585',
+            end: '#F4A0C0',
+          }
+        },
+        wargo: {
+          primary: '#C0577A',
+          secondary: '#D4597A',
+          accent: '#E05585',
+          success: '#EAF6E0', // Mint success tone
+          streak: '#FFE8F0',  // Soft rose background
+          urgent: {
+            bg: '#FFF0EC',
+            text: '#C03010',
+          },
+          muted: '#9A7A85',
+        },
+        // Old Legacy for compatibility
         'bg-light': '#FAF7F5',
         'card-light': '#FDEEF4',
         'border-light': '#F0B8CE',
-        'text-light': '#1A1A1A',
-        'text-muted-light': '#9A7A85',
-        
-        // Brand colors
-        wargo: {
-          primary: '#0066FF',
-          secondary: '#A855F7',
-          accent: '#FF6B35',
-          success: '#10B981',
-          danger: '#EF4444',
-          muted: '#8B92B0',
-          'rose-pink': '#C0577A',
-          'rose-light': '#FDEEF4',
-          'rose-accent': '#E05585',
-        },
-        card: {
-          DEFAULT: 'rgba(23, 23, 26, 0.7)',
-          border: 'rgba(255, 255, 255, 0.08)',
-        },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif', 'Outfit', 'Montserrat'],
       },
       spacing: {
         '128': '32rem',
+        '2xs': '4px',
+        'xs': '8px',
+        'sm': '12px',
+        'md': '20px',
+        'lg': '32px',
       },
       borderRadius: {
-        '2xl': '1rem',
-        '3xl': '1.5rem',
+        'xl': '12px',
+        '2xl': '16px',
+        '3xl': '24px',
+        'full': '9999px',
       },
       boxShadow: {
-        'glow': '0 0 30px rgba(0, 102, 255, 0.2)',
-        'glow-purple': '0 0 30px rgba(168, 85, 247, 0.2)',
-        'glow-rose': '0 0 30px rgba(224, 85, 133, 0.2)',
-        'card': '0 20px 40px rgba(0, 0, 0, 0.3)',
-        'card-light': '0 10px 25px rgba(192, 87, 122, 0.08)',
+        'soft': '0 4px 20px rgba(192, 87, 122, 0.05)',
+        'medium': '0 8px 30px rgba(192, 87, 122, 0.08)',
+        'glow-rose': '0 0 20px rgba(224, 85, 133, 0.15)',
+        'card': '0 10px 25px rgba(192, 87, 122, 0.08)',
       },
       backdropBlur: {
         'xl': '20px',

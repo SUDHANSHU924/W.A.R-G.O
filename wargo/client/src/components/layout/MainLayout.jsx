@@ -21,9 +21,9 @@ export const MainLayout = ({ children, activePage, setPage }) => {
         setIsOpen={setIsMobileOpen}
       />
 
-      <div className='lg:pl-64'>
+      <div className='lg:pl-72'>
         <Header isMobile={isMobile} setIsOpen={setIsMobileOpen} />
-        <main className='px-6 py-8'>{children}</main>
+        <main className='px-4 sm:px-8 py-10 max-w-5xl mx-auto'>{children}</main>
       </div>
     </div>
   );
