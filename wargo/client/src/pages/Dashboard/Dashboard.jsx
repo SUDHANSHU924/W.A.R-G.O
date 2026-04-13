@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Plus, Sparkles, TrendingUp, Calendar, Clock, Bell, ArrowRight } from 'lucide-react';
-import { Card, Button, ProgressRing, TaskCard, Badge, StreakBadge, XPBadge } from '../../components/ui';
+import { Plus, Bell, ArrowRight } from 'lucide-react';
+import { Card, ProgressRing, TaskCard, StreakBadge, XPBadge } from '../../components/ui';
 
 const Dashboard = () => {
   const [tasks] = useState([
@@ -92,26 +92,4 @@ const Dashboard = () => {
     </motion.div>
   );
 };
-              <Badge label='Alert' variant='warning' />
-            </div>
-          </Card>
-        </div>
-      </motion.div>
-
-      {/* Quick Actions */}
-      <motion.div variants={item} className='grid md:grid-cols-3 gap-4'>
-        <Button variant='secondary' className='w-full py-3'>
-          View Weekly Schedule
-        </Button>
-        <Button variant='secondary' className='w-full py-3'>
-          Check Analytics
-        </Button>
-        <Button variant='secondary' className='w-full py-3'>
-          Create New Goal
-        </Button>
-      </motion.div>
-    </motion.div>
-  );
-};
-
 export default Dashboard;
