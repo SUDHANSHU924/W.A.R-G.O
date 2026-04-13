@@ -36,16 +36,19 @@ const Signup = () => {
         }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
+      const data = await response.json();
+
+      if (response.ok && data.token) {
         localStorage.setItem('token', data.token);
         navigate('/');
+      } else if (data.message) {
+        setError(data.message || 'Account creation failed. Please try again.');
       } else {
         setError('Account creation failed. Please try again.');
       }
     } catch (err) {
-      setError('Connection error. Please try again.');
-      console.error(err);
+      setError('Connection error. Please try again: ' + (err.message || 'Unknown error'));
+      console.error('Signup error:', err);
     } finally {
       setIsLoading(false);
     }
